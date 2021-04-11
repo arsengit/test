@@ -1,0 +1,151 @@
+
+@mixin phone {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (min-width: 1200px) and (max-width: 1379.8px) {
+    @content;
+  }
+}
+%ellie {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+$arrowText: #8f8f8f;
+$blockBackground: #41414183;
+$blockBackgroundHover: #414141c7;
+$blockBorder: #81818183;
+
+.page_details {
+  // height: 3000px;
+  background-color: black;
+  color: white;
+  padding-bottom: 5vh;
+  @include phone {
+    padding-bottom: 2vh;
+  }
+
+
+  .past-events {
+    padding: 0 100px;
+    @include small {
+      padding: 0;
+    }
+    @include phone {
+      padding: 0;
+    }
+
+    .divider {
+      margin-top: 50px;
+      border-top: 1px solid $arrowText;
+    }
+
+    &_header {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+
+      @include medium {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      @include small {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      @include phone {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      span {
+        font-size: 20px;
+        font-weight: 600;
+        color: #ffff;
+        display: block;
+      }
+    }
+
+    &_body {
+
+      .video-thumbnail-card {
+        min-height: 327px;
+        height: 327px;
+        max-height: 327px;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-size: cover;
+        background-position: center !important;
+        background-origin: padding-box;
+        border-radius: 3px !important;
+        cursor: pointer;
+        display: block;
+        .speaker {
+          z-index: 2;
+          position: absolute;
+          top: 5px;
+          right: 20px;
+          background-color: white;
+          text-transform: uppercase;
+          padding: 0 0.35rem 0.25rem;
+          border-radius: 3px;
+          align-items: center;
+
+          img {
+            height: 20px;
+          }
+        }
+        .react-player-wrapper {
+          height: 100%;
+          position: relative;
+
+          video {
+            width: 100%;
+            object-fit: fill;
+            display: block;
+            height: 100%;
+            outline: none;
+          }
+
+        }
+        video {
+          border-radius: 3px;
+          object-fit: cover;
+        }
+      }
+
+    }
+
+    .no-data {
+      display: grid;
+      place-items: center;
+
+      > span {
+        margin-top: 3rem;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      > img {
+        margin-top: 1.5rem;
+        height: 100px;
+        width: 100px;
+      }
+    }  
+  }
+}
